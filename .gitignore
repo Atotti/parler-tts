@@ -1,5 +1,9 @@
 # Adapted from https://github.com/huggingface/diffusers/blob/main/.gitignore
 
+output_dir_training
+audio_code_tmp
+tmp_dataset_audio
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -82,8 +86,7 @@ target/
 profile_default/
 ipython_config.py
 
-# pyenv
-.python-version
+
 
 # celery beat schedule file
 celerybeat-schedule
@@ -156,8 +159,6 @@ tags
 # pre-commit
 .pre-commit*
 
-# .lock
-*.lock
 
 # DS_Store (MacOS)
 .DS_Store
