@@ -52,7 +52,7 @@ from parler_tts import (
     build_delay_pattern_mask,
 )
 
-from training.utils import (
+from utils import (
     get_last_checkpoint,
     rotate_checkpoints,
     log_pred,
@@ -61,9 +61,9 @@ from training.utils import (
     save_codec_checkpoint,
     get_last_codec_checkpoint_step,
 )
-from training.arguments import ModelArguments, DataTrainingArguments, ParlerTTSTrainingArguments
-from training.data import load_multiple_datasets, DataCollatorParlerTTSWithPadding, DataCollatorEncodecWithPadding
-from training.eval import clap_similarity, wer, si_sdr
+from arguments import ModelArguments, DataTrainingArguments, ParlerTTSTrainingArguments
+from data import load_multiple_datasets, DataCollatorParlerTTSWithPadding, DataCollatorEncodecWithPadding
+from eval import clap_similarity, wer, si_sdr
 
 logger = logging.getLogger(__name__)
 
@@ -305,7 +305,7 @@ def main():
         token=data_args.token,
         trust_remote_code=data_args.trust_remote_code,
     )
- 
+
     if training_args.codebook_weights is not None and len(training_args.codebook_weights) != config.decoder.num_codebooks:
         raise ValueError(f"`codebook_weights` has length {len(training_args.codebook_weights)} when it should be of length {config.decoder.num_codebooks}.")
 
@@ -729,7 +729,7 @@ def main():
         eval_steps = steps_per_epoch
     else:
         eval_steps = training_args.eval_steps
-        
+
     if training_args.eval_generation_steps is None:
         eval_generation_steps = eval_steps
     else:
@@ -913,7 +913,7 @@ def main():
         ce_loss = outputs.loss
 
         metrics = {"loss": ce_loss}
-        
+
         # per CE loss
         per_codebook_losses = outputs.per_codebook_losses
         metrics.update({f"codebook_{i}_loss": l for (i,l) in enumerate(per_codebook_losses)})
@@ -961,7 +961,7 @@ def main():
         # CE (data) loss
         ce_loss = outputs.loss
         metrics = {"loss": ce_loss}
-        
+
         # per CE loss
         per_codebook_losses = outputs.per_codebook_losses
         metrics.update({f"codebook_{i}_loss": l for (i,l) in enumerate(per_codebook_losses)})
