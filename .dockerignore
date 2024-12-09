@@ -1,0 +1,8 @@
+.venv
+audio_code_tmp
+fine_tune_parler_tts.egg-info
+output_dir_training
+parler_tts.egg-info
+tmp_dataset_audio
+wandb
+pretrained_models
