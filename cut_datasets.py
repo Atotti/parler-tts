@@ -5,7 +5,7 @@ descriptions_dataset_name = "Atotti/tomoko-tts-descriptions-v1"  # 元のデー�
 source_dataset_name = "Atotti/jsut-corpus-datasets"  # 元のデータセット名
 
 subset_name = "default"  # サブセット名がある場合指定
-n = 1250  # 抽出する件数
+n = 312  # 抽出する件数
 new_descriptions_dataset_name = f"{descriptions_dataset_name}-{n}"  # 新しいデータセット名
 new_dataset_name = f"{source_dataset_name}-{n}"  # 新しいデータセット名
 
